@@ -38,15 +38,17 @@
       text-align: center;
     }
 
-    /* KLEINER LOGO */
+    /* LOGO */
     .logo {
       max-width: 180px;
       width: 45%;
       height: auto;
       margin: 0 auto 0.8rem;
       display: block;
+      cursor: pointer;
     }
 
+    /* TAGLINE */
     .tagline {
       margin: 0 0 1.6rem;
       font-size: 0.85rem;
@@ -62,6 +64,7 @@
       margin-bottom: 0;
     }
 
+    /* KEYWORDS */
     .keywords {
       display: flex;
       flex-wrap: wrap;
@@ -98,6 +101,7 @@
       width: 100%;
     }
 
+    /* PANELS */
     .panels {
       max-width: 620px;
       margin: 0 auto 2rem;
@@ -138,6 +142,7 @@
       line-height: 1.6;
     }
 
+    /* CONTACT */
     .contact {
       border-top: 1px solid rgba(232,210,130,0.35);
       padding-top: 1rem;
@@ -169,10 +174,23 @@
       color: var(--drs-goud);
     }
 
-    /* Mobiel: contact onder elkaar */
+    /* MOBIEL: grotere typografie + contact onder elkaar */
     @media (max-width: 600px) {
-      .page {
-        padding: 2rem 1.2rem 2rem;
+      body {
+        font-size: 1.08rem;
+      }
+
+      .keyword {
+        font-size: 1rem;
+      }
+
+      .panel p {
+        font-size: 1.02rem;
+        line-height: 1.65;
+      }
+
+      .contact {
+        font-size: 1.02rem;
       }
 
       .contact-links {
@@ -181,78 +199,137 @@
         gap: 0.4rem;
       }
     }
+
+    /* POPUP */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+    }
+
+    .popup {
+      background: #0c203d;
+      border: 1px solid rgba(232,210,130,0.6);
+      max-width: 420px;
+      width: 100%;
+      margin: 0 1.5rem;
+      padding: 1.8rem 1.6rem 1.4rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+      text-align: left;
+      position: relative;
+    }
+
+    .popup-title {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.85rem;
+      color: var(--drs-goud);
+      margin: 0 0 0.6rem;
+    }
+
+    .popup-subtitle {
+      margin: 0 0 0.8rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .popup p {
+      margin: 0 0 0.6rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .popup-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .popup-primary {
+      display: inline-block;
+      padding: 0.6rem 1.4rem;
+      background-color: var(--drs-goud);
+      color: var(--drs-blauw);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 999px;
+    }
+
+    .popup-secondary {
+      border: none;
+      background: none;
+      color: var(--drs-wit);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    .popup-close-x {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.9rem;
+      border: none;
+      background: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="page">
 
     <!-- LOGO -->
-    <img class="logo" src="Images/DRS-logo.png" alt="DRS Classics">
+    <img class="logo" id="logo" src="Images/DRS-logo.png" alt="DRS Classics">
     <p class="tagline" id="tagline">Afwerking die je voelt, niet alleen ziet.</p>
 
-    <!-- KLIKBARE WOORDEN -->
+    <!-- KEYWORDS -->
     <div class="keywords">
       <span class="keyword" data-target="detailing">Detailing</span>
       <span class="keyword" data-target="restoring">Restoring</span>
       <span class="keyword" data-target="service">Service</span>
     </div>
 
-    <!-- LUXE FADE-IN PANELS -->
+    <!-- PANELS -->
     <div class="panels">
 
       <div class="panel" id="panel-detailing">
         <div class="panel-title">Detailing</div>
         <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
-        <p>
-          Detailing bij DRS Classics is geen behandeling, maar een ritueel.
-          We werken niet sneller &mdash; we werken dieper. Elke lijn, elke glans, elk oppervlak
-          krijgt de tijd om terug te ademen.
-        </p>
-        <p>
-          Met verfijnde technieken herstellen we de helderheid van de lak, verzachten we
-          imperfecties en brengen we een beschermende glanslaag aan die maandenlang blijft spreken.
-          Het interieur wordt zorgvuldig ontdaan van stof, sporen en vermoeidheid, tot het opnieuw
-          warm en uitnodigend voelt.
-        </p>
-        <p>
-          Alles gebeurt in een rustige, gecontroleerde omgeving.
-          Geen haast. Geen afleiding. Alleen aandacht voor jouw wagen.
-        </p>
+        <p>Detailing bij DRS Classics is geen behandeling, maar een ritueel. We werken niet sneller — we werken dieper. Elke lijn, elke glans, elk oppervlak krijgt de tijd om terug te ademen.</p>
+        <p>Met verfijnde technieken herstellen we de helderheid van de lak, verzachten we imperfecties en brengen we een beschermende glanslaag aan die maandenlang blijft spreken.</p>
+        <p>Het interieur wordt zorgvuldig ontdaan van stof, sporen en vermoeidheid, tot het opnieuw warm en uitnodigend voelt.</p>
+        <p>Alles gebeurt in een rustige, gecontroleerde omgeving. Geen haast. Geen afleiding. Alleen aandacht voor jouw wagen.</p>
       </div>
 
       <div class="panel" id="panel-restoring">
         <div class="panel-title">Restoring</div>
         <p><strong>Het oorspronkelijke karakter, met zorg herontdekt.</strong></p>
-        <p>
-          Restoring is voor ons een intiem proces &mdash; één waarbij we luisteren naar wat
-          een wagen nodig heeft, en vooral naar wat hij wil behouden.
-        </p>
-        <p>
-          We respecteren de originele lijnen, materialen en geest van het ontwerp.
-          Met zachte handen en technische finesse brengen we vorm, detail en balans terug,
-          zonder het verhaal van de auto uit te wissen.
-        </p>
-        <p>
-          Geen over-restauratie, maar subtiele keuzes, consistente kwaliteit en een diep gevoel voor authenticiteit.
-        </p>
+        <p>Restoring is voor ons een intiem proces — één waarbij we luisteren naar wat een wagen nodig heeft, en vooral naar wat hij wil behouden.</p>
+        <p>We respecteren de originele lijnen, materialen en geest van het ontwerp. Met zachte handen en technische finesse brengen we vorm, detail en balans terug, zonder het verhaal van de auto uit te wissen.</p>
+        <p>Geen over-restauratie, maar subtiele keuzes, consistente kwaliteit en een diep gevoel voor authenticiteit.</p>
       </div>
 
       <div class="panel" id="panel-service">
         <div class="panel-title">Service</div>
         <p><strong>Zorg die verder gaat dan onderhoud.</strong></p>
-        <p>
-          Service bij DRS Classics is persoonlijk.
-          We werken met een beperkt aantal wagens tegelijk, zodat jouw auto de volledige
-          aandacht krijgt &mdash; en jij volledige rust.
-        </p>
-        <p>
-          We plannen kleine onderhoudswerken, check-ups en voorbereidingen op ritten of langere
-          stilstand. Steeds in overleg, steeds transparant, steeds met dezelfde toewijding alsof
-          de wagen van onszelf is.
-        </p>
-        <p>
-          Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.
-        </p>
+        <p>Service bij DRS Classics is persoonlijk. We werken met een beperkt aantal wagens tegelijk, zodat jouw auto de volledige aandacht krijgt — en jij volledige rust.</p>
+        <p>We plannen onderhoud, check-ups en voorbereidingen op ritten of langere stilstand. Steeds in overleg, altijd transparant.</p>
+        <p>Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.</p>
       </div>
 
     </div>
@@ -264,16 +341,35 @@
         <a href="mailto:info@drsclassics.be">info@drsclassics.be</a>
         <a href="tel:+32478014317">Atelier: +32 478 01 43 17</a>
         <a href="tel:+32499705870">Coördinatie: +32 499 70 58 70</a>
-        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank" rel="noopener">
-          Noorderstraat 50, 1502 Lembeek
-        </a>
+        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank" rel="noopener">Noorderstraat 50, 1502 Lembeek</a>
       </div>
     </div>
 
   </div>
 
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popup-overlay">
+    <div class="popup">
+      <button class="popup-close-x" id="popup-close-x" aria-label="Sluiten">&times;</button>
+      <p class="popup-title">Opening DRS Classics Atelier</p>
+      <p class="popup-subtitle">27 februari — vanaf 16u</p>
+      <p>Frietjes, bubbels en klassieke wagens.</p>
+      <p>We openen officieel de deuren van het DRS Classics Atelier in Lembeek en nodigen je graag uit om samen te klinken tussen de wagens.</p>
+
+      <div class="popup-actions">
+        <a class="popup-primary"
+           href="https://forms.gle/JE_GOOGLE_FORM_LINK_HIER"
+           target="_blank"
+           rel="noopener">
+          Inschrijven
+        </a>
+        <button class="popup-secondary" id="popup-close-btn">Misschien later</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Handmatige fade-panel logica
+    /* PANEL LOGICA */
     const keywords = document.querySelectorAll('.keyword');
     const panels = {
       detailing: document.getElementById('panel-detailing'),
@@ -283,18 +379,16 @@
     const tagline = document.getElementById('tagline');
     let taglineHidden = false;
 
-    // Zorg dat alle panels onzichtbaar starten
     Object.values(panels).forEach(p => {
       p.style.display = "none";
       p.style.opacity = 0;
     });
 
-    // Klikgedrag
     keywords.forEach(keyword => {
       keyword.addEventListener('click', () => {
         const target = keyword.dataset.target;
 
-        // tagline smooth verbergen bij eerste klik
+        // tagline weg bij eerste klik
         if (!taglineHidden) {
           tagline.classList.add('hidden');
           taglineHidden = true;
@@ -305,8 +399,8 @@
 
         Object.values(panels).forEach(panel => {
           panel.classList.remove('active');
-          panel.style.opacity = 0;
           panel.style.display = "none";
+          panel.style.opacity = 0;
         });
 
         const activePanel = panels[target];
@@ -317,6 +411,58 @@
           activePanel.style.opacity = 1;
         }, 10);
       });
+    });
+
+    /* LOGO RESET */
+    const logo = document.getElementById('logo');
+    logo.addEventListener('click', () => {
+      tagline.classList.remove('hidden');
+      taglineHidden = false;
+
+      keywords.forEach(k => k.classList.remove('active'));
+      Object.values(panels).forEach(panel => {
+        panel.classList.remove('active');
+        panel.style.display = "none";
+        panel.style.opacity = 0;
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /* POPUP LOGICA */
+    const popupOverlay = document.getElementById('popup-overlay');
+    const popupCloseX = document.getElementById('popup-close-x');
+    const popupCloseBtn = document.getElementById('popup-close-btn');
+
+    function openPopupOnce() {
+      try {
+        const seen = localStorage.getItem('drsOpeningPopupSeen');
+        if (!seen) {
+          popupOverlay.classList.add('active');
+        }
+      } catch (e) {
+        popupOverlay.classList.add('active');
+      }
+    }
+
+    function closePopup() {
+      popupOverlay.classList.remove('active');
+      try {
+        localStorage.setItem('drsOpeningPopupSeen', 'true');
+      } catch (e) {}
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(openPopupOnce, 800);
+    });
+
+    popupCloseX.addEventListener('click', closePopup);
+    popupCloseBtn.addEventListener('click', closePopup);
+
+    popupOverlay.addEventListener('click', (e) => {
+      if (e.target === popupOverlay) {
+        closePopup();
+      }
     });
   </script>
 </body>
