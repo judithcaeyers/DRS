@@ -11,11 +11,9 @@
       --drs-goud: #e8d282;
       --drs-wit: #ffffff;
 
-      /* animaties */
+      /* fade animaties */
       --fade-duration: 0.75s;
       --fade-ease: ease;
-      --open-duration: 0.75s;
-      --panel-height: 260px; /* vaste ruimte tussen keywords en contact */
     }
 
     * {
@@ -24,47 +22,47 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
       background-color: var(--drs-blauw);
       color: var(--drs-wit);
       font-family: "Along Serif", serif;
-      display: flex;
-      justify-content: center;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 960px;
-      padding: 2.5rem 1.5rem 2rem;
-      text-align: center;
+      height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* Logo + tagline */
+    /* Vast bovenblok */
+    .header-area {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--drs-blauw);
+      z-index: 10;
+      border-bottom: 1px solid rgba(232,210,130,0.15);
+    }
+
     .logo {
       max-width: 150px;
-      width: 45%;
       height: auto;
       margin: 0 auto 0.8rem;
       display: block;
     }
 
     .tagline {
-      margin: 0 0 1.6rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
+      margin: 0 0 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--drs-goud);
     }
 
-    /* Keywords */
     .keywords {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.8rem;
-      margin-bottom: 0.8rem;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
     }
 
     .keyword {
@@ -80,13 +78,11 @@
     .keyword::after {
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 0 auto;
+      left: 0; right: 0; bottom: 0;
       width: 0;
       height: 1px;
       background-color: var(--drs-goud);
+      margin: 0 auto;
       transition: width 0.25s ease;
     }
 
@@ -95,38 +91,21 @@
       width: 100%;
     }
 
-    /* Scheidslijn onder keywords */
-    .divider-top {
-      max-width: 620px;
-      margin: 0.3rem auto 0;
-      border-bottom: 1px solid rgba(232,210,130,0.35);
-    }
-
-    /* VASTE RUIMTE voor tekst, die 1x opent */
-    .text-shell {
-      max-width: 620px;
-      margin: 0 auto 1.8rem;
-      height: 0;
-      overflow: hidden;
-      transition: height var(--open-duration) var(--fade-ease);
-    }
-
-    .text-shell.open {
-      height: var(--panel-height);
-    }
-
-    .text-inner {
-      height: 100%;
+    /* Scrollbare content onderaan */
+    .content-area {
+      margin-top: 230px; /* ruimte voor het vaste bovenblok */
+      padding: 1.5rem;
       overflow-y: auto;
-      padding: 1rem 0;
-      text-align: left;
+      flex: 1;
     }
 
-    /* Panels in die vaste ruimte */
     .panel {
       display: none;
       opacity: 0;
       transition: opacity var(--fade-duration) var(--fade-ease);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(232,210,130,0.2);
+      margin-bottom: 2rem;
     }
 
     .panel.active {
@@ -148,16 +127,10 @@
       line-height: 1.6;
     }
 
-    /* Scheidslijn boven contact */
-    .divider-bottom {
-      max-width: 620px;
-      margin: 0 auto 1rem;
-      border-top: 1px solid rgba(232,210,130,0.35);
-    }
-
     /* Contact */
     .contact {
       font-size: 0.9rem;
+      padding-top: 1rem;
     }
 
     .contact h2 {
@@ -180,106 +153,62 @@
       text-decoration: none;
     }
 
-    .contact a:hover {
-      color: var(--drs-goud);
-    }
+    .contact a:hover { color: var(--drs-goud); }
 
-    @media (max-width: 600px) {
-      .page {
-        padding: 2rem 1.2rem 2rem;
-      }
-      .text-shell.open {
-        height: 300px; /* iets hoger op mobiel */
-      }
-    }
   </style>
 </head>
-<body>
-  <div class="page">
 
-    <!-- Logo + tagline -->
+<body>
+
+  <!-- VAST BLOK BOVENAAN -->
+  <div class="header-area">
     <img class="logo" src="Images/DRS-logo.png" alt="DRS Classics">
     <p class="tagline">Afwerking die je voelt, niet alleen ziet.</p>
 
-    <!-- Drie onderwerpen -->
     <div class="keywords">
-      <span class="keyword" data-target="detail-panel">Detailing</span>
-      <span class="keyword" data-target="restore-panel">Restoring</span>
-      <span class="keyword" data-target="service-panel">Service</span>
+      <span class="keyword" data-target="detailing">Detailing</span>
+      <span class="keyword" data-target="restoring">Restoring</span>
+      <span class="keyword" data-target="service">Service</span>
     </div>
-    <div class="divider-top"></div>
+  </div>
 
-    <!-- Vaste ruimte waar tekst in verschijnt (scrollbaar) -->
-    <div class="text-shell" id="text-shell">
-      <div class="text-inner">
-        <div class="panel" id="detail-panel">
-          <div class="panel-title">Detailing</div>
-          <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
-          <p>
-            Detailing bij DRS Classics is geen behandeling, maar een ritueel.
-            We werken niet sneller &mdash; we werken dieper. Elke lijn, elke glans, elk oppervlak
-            krijgt de tijd om terug te ademen.
-          </p>
-          <p>
-            Met verfijnde technieken herstellen we de helderheid van de lak, verzachten we
-            imperfecties en brengen we een beschermende glanslaag aan die maandenlang blijft spreken.
-            Het interieur wordt zorgvuldig ontdaan van stof, sporen en vermoeidheid, tot het opnieuw
-            warm en uitnodigend voelt.
-          </p>
-          <p>
-            Alles gebeurt in een rustige, gecontroleerde omgeving.
-            Geen haast. Geen afleiding. Alleen aandacht voor jouw wagen.
-          </p>
-        </div>
+  <!-- SCROLLBARE CONTENT -->
+  <div class="content-area">
 
-        <div class="panel" id="restore-panel">
-          <div class="panel-title">Restoring</div>
-          <p><strong>Het oorspronkelijke karakter, met zorg herontdekt.</strong></p>
-          <p>
-            Restoring is voor ons een intiem proces &mdash; één waarbij we luisteren naar wat
-            een wagen nodig heeft, en vooral naar wat hij wil behouden.
-          </p>
-          <p>
-            We respecteren de originele lijnen, materialen en geest van het ontwerp.
-            Met zachte handen en technische finesse brengen we vorm, detail en balans terug,
-            zonder het verhaal van de auto uit te wissen.
-          </p>
-          <p>
-            Geen over-restauratie, maar subtiele keuzes, consistente kwaliteit en een diep gevoel
-            voor authenticiteit.
-          </p>
-        </div>
-
-        <div class="panel" id="service-panel">
-          <div class="panel-title">Service</div>
-          <p><strong>Zorg die verder gaat dan onderhoud.</strong></p>
-          <p>
-            Service bij DRS Classics is persoonlijk.
-            We werken met een beperkt aantal wagens tegelijk, zodat jouw auto de volledige
-            aandacht krijgt &mdash; en jij volledige rust.
-          </p>
-          <p>
-            We plannen kleine onderhoudswerken, check-ups en voorbereidingen op ritten of langere
-            stilstand. Steeds in overleg, steeds transparant, steeds met dezelfde toewijding alsof
-            de wagen van onszelf is.
-          </p>
-          <p>
-            Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.
-          </p>
-        </div>
-      </div>
+    <div class="panel" id="panel-detailing">
+      <div class="panel-title">Detailing</div>
+      <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
+      <p>Detailing bij DRS Classics is geen behandeling, maar een ritueel. 
+         We werken niet sneller — we werken dieper.</p>
+      <p>Met verfijnde technieken herstellen we de helderheid van de lak,
+         verzachten we imperfecties en brengen we een beschermende glanslaag aan.</p>
+      <p>Alles gebeurt in een rustige, gecontroleerde omgeving zonder haast of afleiding.</p>
     </div>
 
-    <div class="divider-bottom"></div>
+    <div class="panel" id="panel-restoring">
+      <div class="panel-title">Restoring</div>
+      <p><strong>Het oorspronkelijke karakter, met zorg herontdekt.</strong></p>
+      <p>Restoring is voor ons een intiem proces: luisteren, begrijpen, respecteren.</p>
+      <p>We herstellen vorm, detail en balans zonder het verhaal van de wagen uit te wissen.</p>
+      <p>Geen over-restauratie — alleen authentieke keuzes en eerlijke afwerking.</p>
+    </div>
 
-    <!-- Contact -->
+    <div class="panel" id="panel-service">
+      <div class="panel-title">Service</div>
+      <p><strong>Zorg die verder gaat dan onderhoud.</strong></p>
+      <p>We werken met een beperkt aantal wagens tegelijk, zodat elke auto volledige
+         aandacht krijgt.</p>
+      <p>Transparante updates, kleine services, check-ups en voorbereiding voor ritten
+         of langere stilstand.</p>
+    </div>
+
     <div class="contact">
       <h2>Contact</h2>
       <div class="contact-links">
         <a href="mailto:info@drsclassics.be">info@drsclassics.be</a>
         <a href="tel:+32478014317">Atelier: +32 478 01 43 17</a>
         <a href="tel:+32499705870">Coördinatie: +32 499 70 58 70</a>
-        <a href="https://www.google.com/maps?q=Noorderstraat+50,+1502+Lembeek" target="_blank" rel="noopener">
+        <a href="https://www.google.com/maps?q=Noorderstraat+50,+1502+Lembeek" target="_blank">
           Noorderstraat 50, 1502 Lembeek
         </a>
       </div>
@@ -287,35 +216,39 @@
 
   </div>
 
-  <script>
-    const keywords = document.querySelectorAll('.keyword');
-    const panels = document.querySelectorAll('.panel');
-    const textShell = document.getElementById('text-shell');
-    let isOpen = false;
+<script>
+  const keywords = document.querySelectorAll('.keyword');
+  const panels = {
+    detailing: document.getElementById('panel-detailing'),
+    restoring: document.getElementById('panel-restoring'),
+    service: document.getElementById('panel-service')
+  };
 
-    keywords.forEach(keyword => {
-      keyword.addEventListener('click', () => {
-        const targetId = keyword.dataset.target;
-        const targetPanel = document.getElementById(targetId);
+  Object.values(panels).forEach(p => { p.style.display = "none"; p.style.opacity = 0; });
 
-        // Active state op keywords
-        keywords.forEach(k => k.classList.remove('active'));
-        keyword.classList.add('active');
+  keywords.forEach(keyword => {
+    keyword.addEventListener('click', () => {
+      const target = keyword.dataset.target;
 
-        // Panels wisselen met fade
-        panels.forEach(p => {
-          p.classList.remove('active');
-        });
-        // Eerst tonen, dan fade-in
-        targetPanel.classList.add('active');
+      keywords.forEach(k => k.classList.remove('active'));
+      keyword.classList.add('active');
 
-        // Bij eerste klik: ruimte langzaam openen
-        if (!isOpen) {
-          textShell.classList.add('open');
-          isOpen = true;
-        }
+      Object.values(panels).forEach(panel => {
+        panel.classList.remove('active');
+        panel.style.opacity = 0;
+        panel.style.display = "none";
       });
+
+      const activePanel = panels[target];
+      activePanel.style.display = "block";
+
+      setTimeout(() => {
+        activePanel.classList.add('active');
+        activePanel.style.opacity = 1;
+      }, 10);
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
