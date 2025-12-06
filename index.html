@@ -60,7 +60,7 @@
       margin-bottom: 0;
     }
 
-    /* standaard: de mobiele line break niet tonen */
+    /* standaard: de mobiele line-break niet tonen */
     .mobile-break {
       display: none;
     }
@@ -70,7 +70,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2.2rem;          /* iets meer luxe-ruimte */
+      margin-top: 2.2rem;   /* ruimte onder slagzin */
       margin-bottom: 1.5rem;
     }
 
@@ -79,7 +80,7 @@
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.9rem;
+      font-size: 1.05rem;   /* tikje groter dan 0.9 */
       font-weight: 700;
       padding-bottom: 0.25rem;
     }
@@ -188,8 +189,8 @@
       /* KEYWORDS GROTER + MEER AFSTAND */
       .keywords {
         flex-direction: column;
-        gap: 1.55rem;
-        margin-top: 2.8rem; /* extra afstand onder slagzin */
+        gap: 1.8rem;
+        margin-top: 2.8rem; /* extra afstand onder slagzin bij start */
       }
 
       .keyword {
@@ -380,6 +381,7 @@
       service: document.getElementById('panel-service')
     };
     const tagline = document.getElementById('tagline');
+    const keywordsContainer = document.querySelector('.keywords');
     let taglineHidden = false;
 
     Object.values(panels).forEach(p => {
@@ -394,6 +396,11 @@
         if (!taglineHidden) {
           tagline.classList.add('hidden');
           taglineHidden = true;
+
+          // Op mobiel: onderwerpen iets dichter naar boven schuiven
+          if (window.innerWidth <= 600 && keywordsContainer) {
+            keywordsContainer.style.marginTop = '0.8rem';
+          }
         }
 
         keywords.forEach(k => k.classList.remove('active'));
@@ -420,6 +427,11 @@
     logo.addEventListener('click', () => {
       tagline.classList.remove('hidden');
       taglineHidden = false;
+
+      // Op mobiel: onderwerpen terug op start-positie
+      if (window.innerWidth <= 600 && keywordsContainer) {
+        keywordsContainer.style.marginTop = '2.8rem'; // zelfde als CSS startwaarde
+      }
 
       keywords.forEach(k => k.classList.remove('active'));
       Object.values(panels).forEach(panel => {
