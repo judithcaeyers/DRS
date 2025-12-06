@@ -10,6 +10,10 @@
       --drs-blauw: #0c203d;
       --drs-goud: #e8d282;
       --drs-wit: #ffffff;
+
+      /* fade animaties */
+      --fade-duration: 0.35s;
+      --fade-ease: ease;
     }
 
     * {
@@ -34,11 +38,12 @@
       text-align: center;
     }
 
+    /* KLEINER LOGO */
     .logo {
-      max-width: 260px;
-      width: 60%;
+      max-width: 180px;
+      width: 45%;
       height: auto;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.6rem;
       display: block;
     }
 
@@ -55,7 +60,7 @@
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       padding-bottom: 0.25rem;
     }
@@ -82,18 +87,26 @@
       max-width: 620px;
       margin: 0 auto 2rem;
       text-align: left;
-      min-height: 320px; /* wat hoger voor de langere teksten */
+      min-height: 240px; /* contact blijft vast */
+      position: relative;
     }
 
     .panel {
       display: none;
+      opacity: 0;
+      transition: opacity var(--fade-duration) var(--fade-ease);
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       border-top: 1px solid rgba(232,210,130,0.35);
+      position: absolute;
+      left: 0;
+      right: 0;
     }
 
     .panel.active {
       display: block;
+      opacity: 1;
+      position: relative;
     }
 
     .panel-title {
@@ -140,23 +153,13 @@
     .contact a:hover {
       color: var(--drs-goud);
     }
-
-    @media (max-width: 600px) {
-      .panels {
-        text-align: left;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="page">
 
     <!-- LOGO -->
-    <img
-      class="logo"
-      src="Images/DRS-logo.png"
-      alt="DRS Classics"
-    >
+    <img class="logo" src="Images/DRS-logo.png" alt="DRS Classics">
 
     <!-- KLIKBARE WOORDEN -->
     <div class="keywords">
@@ -165,8 +168,9 @@
       <span class="keyword" data-target="service">Service</span>
     </div>
 
-    <!-- UITKLAPPENDE LUXE TEKSTEN -->
+    <!-- LUXE FADE-IN PANELS -->
     <div class="panels">
+
       <div class="panel" id="panel-detailing">
         <div class="panel-title">Detailing</div>
         <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
@@ -224,10 +228,10 @@
           Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.
         </p>
         <p>
-          <em>Jij geniet van het rijden.<br>
-          Wij zorgen voor de rest.</em>
+          <em>Jij geniet van het rijden.<br>Wij zorgen voor de rest.</em>
         </p>
       </div>
+
     </div>
 
     <!-- CONTACT -->
@@ -246,7 +250,7 @@
   </div>
 
   <script>
-    // Klikbare woorden laten panels openklappen
+    // Handmatige fade-panel logica
     const keywords = document.querySelectorAll('.keyword');
     const panels = {
       detailing: document.getElementById('panel-detailing'),
@@ -254,20 +258,35 @@
       service: document.getElementById('panel-service')
     };
 
+    // Zorg dat alle panels onzichtbaar starten
+    Object.values(panels).forEach(p => {
+      p.style.display = "none";
+      p.style.opacity = 0;
+    });
+
+    // Klikgedrag
     keywords.forEach(keyword => {
       keyword.addEventListener('click', () => {
         const target = keyword.dataset.target;
 
         keywords.forEach(k => k.classList.remove('active'));
-        Object.values(panels).forEach(p => p.classList.remove('active'));
-
         keyword.classList.add('active');
-        panels[target].classList.add('active');
+
+        Object.values(panels).forEach(panel => {
+          panel.classList.remove('active');
+          panel.style.opacity = 0;
+          panel.style.display = "none";
+        });
+
+        const activePanel = panels[target];
+        activePanel.style.display = "block";
+
+        setTimeout(() => {
+          activePanel.classList.add('active');
+          activePanel.style.opacity = 1;
+        }, 10);
       });
     });
-
-    // Standaard "Detailing" open
-    document.querySelector('.keyword[data-target="detailing"]').click();
   </script>
 </body>
 </html>
