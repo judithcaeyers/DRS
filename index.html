@@ -153,7 +153,7 @@
     <!-- LOGO -->
     <img
       class="logo"
-      src="images/drs-classics-logo-negatief.svg"
+      src="Images/DRS-logo.png"
       alt="DRS Classics"
     >
 
@@ -164,37 +164,36 @@
       <span class="keyword" data-target="service">Service</span>
     </div>
 
-    <!-- UITKLAPPENDE TEKST -->
+    <!-- UITKLAPPENDE LUXE TEKSTEN -->
     <div class="panels">
       <div class="panel" id="panel-detailing">
         <div class="panel-title">Detailing</div>
         <p>
-          Diepe, zorgvuldige reiniging en afwerking van interieur en exterieur. 
-          Lakcorrectie, bescherming, lederverzorging en aandacht voor elk detail – 
-          zodat je oldtimer of youngtimer er beter uitziet dan bij aflevering.
+          Detailing bij DRS Classics is geen behandeling, maar een ritueel. We werken in stilte en met volle aandacht, zodat
+          de lak opnieuw ademt, het interieur verzacht en elke lijn de glans krijgt die ze verdient. Geen haast — alleen
+          pure afwerking en authentieke schoonheid.
         </p>
       </div>
 
       <div class="panel" id="panel-restoring">
         <div class="panel-title">Restoring</div>
         <p>
-          Gerichte cosmetische en lichte technische ingrepen om je wagen opnieuw 
-          tot leven te brengen. We respecteren de originele lijnen en materialen, 
-          en zoeken samen naar de juiste balans tussen patina en perfectie.
+          Restoring is het herstellen van karakter. Met technische finesse en esthetische gevoeligheid brengen we vorm,
+          originaliteit en balans terug, zonder het verhaal van de wagen uit te wissen. Subtiel, zorgvuldig en altijd met
+          eerbied voor het oorspronkelijke ontwerp.
         </p>
       </div>
 
       <div class="panel" id="panel-service">
         <div class="panel-title">Service</div>
         <p>
-          Kleine onderhoudswerken, check-ups en voorbereiding op rally, roadtrip 
-          of winterstop. Transparante communicatie, duidelijke afspraken en één 
-          vast aanspreekpunt voor jouw wagen.
+          Service bij DRS Classics is persoonlijke zorg. Kleine onderhoudswerken, gerichte check-ups en begeleiding op maat —
+          steeds transparant, altijd met aandacht. Jij geniet van elke rit; wij zorgen voor de rust erachter.
         </p>
       </div>
     </div>
 
-    <!-- CONTACT ONDERAAN -->
+    <!-- CONTACT -->
     <div class="contact">
       <h2>Contact</h2>
       <div class="contact-links">
@@ -222,7 +221,6 @@
       keyword.addEventListener('click', () => {
         const target = keyword.dataset.target;
 
-        // Als je wil dat er maar één tegelijk open staat:
         keywords.forEach(k => k.classList.remove('active'));
         Object.values(panels).forEach(p => p.classList.remove('active'));
 
@@ -231,9 +229,8 @@
       });
     });
 
-    // Optioneel: standaard "Detailing" openzetten
+    // Standaard "Detailing" open
     document.querySelector('.keyword[data-target="detailing"]').click();
   </script>
 </body>
 </html>
-
