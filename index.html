@@ -60,6 +60,11 @@
       margin-bottom: 0;
     }
 
+    /* standaard: de mobiele line break niet tonen */
+    .mobile-break {
+      display: none;
+    }
+
     /* KEYWORDS */
     .keywords {
       display: flex;
@@ -175,16 +180,21 @@
 
       body { font-size: 1.08rem; }
 
+      /* slagzin op 2 regels op mobiel */
+      .mobile-break {
+        display: inline;
+      }
+
       /* KEYWORDS GROTER + MEER AFSTAND */
       .keywords {
-  flex-direction: column;
-  gap: 1.4rem; /* was 1.4rem */
-  margin-top: 2.8rem; /* extra afstand onder slagzin */
-}
+        flex-direction: column;
+        gap: 1.55rem;
+        margin-top: 2.8rem; /* extra afstand onder slagzin */
+      }
 
-.keyword {
-  font-size: 1.35rem; /* was 1.2rem */
-}
+      .keyword {
+        font-size: 1.35rem;
+      }
 
       .panel p {
         font-size: 1.02rem;
@@ -286,10 +296,9 @@
     <!-- LOGO -->
     <img class="logo" id="logo" src="Images/DRS-logo.png" alt="DRS Classics">
 
-    <!-- SLAGZIN OP TWEE REGELS -->
+    <!-- SLAGZIN: 1 regel desktop, 2 regels mobiel -->
     <p class="tagline" id="tagline">
-      Afwerking die je voelt,<br>
-      niet alleen ziet.
+      Afwerking die je voelt,<span class="mobile-break"><br></span> niet alleen ziet.
     </p>
 
     <!-- KEYWORDS -->
