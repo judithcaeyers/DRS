@@ -10,15 +10,11 @@
       --drs-blauw: #0c203d;
       --drs-goud: #e8d282;
       --drs-wit: #ffffff;
-
-      /* fade animaties */
       --fade-duration: 0.75s;
       --fade-ease: ease;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -106,7 +102,7 @@
       max-width: 620px;
       margin: 0 auto 2rem;
       text-align: left;
-      min-height: 240px; /* contact blijft vast */
+      min-height: 240px;
       position: relative;
     }
 
@@ -174,14 +170,17 @@
       color: var(--drs-goud);
     }
 
-    /* MOBIEL: grotere typografie + contact onder elkaar */
+    /* 📱 MOBIEL AANPASSINGEN */
     @media (max-width: 600px) {
-      body {
-        font-size: 1.08rem;
-      }
 
-      .keyword {
-        font-size: 1rem;
+      body { font-size: 1.08rem; }
+
+      .keyword { font-size: 1rem; }
+
+      /* KEYWORDS ONDER ELKAAR */
+      .keywords {
+        flex-direction: column;
+        gap: 1rem;
       }
 
       .panel p {
@@ -189,18 +188,21 @@
         line-height: 1.65;
       }
 
-      .contact {
-        font-size: 1.02rem;
-      }
+      .contact { font-size: 1.02rem; }
 
       .contact-links {
         flex-direction: column;
         align-items: center;
         gap: 0.4rem;
       }
+
+      /* TAGLINE BREKEN OP MOBIEL */
+      .tagline {
+        white-space: pre-line;
+      }
     }
 
-    /* POPUP (geel, blauwe tekst, gecentreerd) */
+    /* POPUP */
     .popup-overlay {
       position: fixed;
       inset: 0;
@@ -211,9 +213,7 @@
       z-index: 1000;
     }
 
-    .popup-overlay.active {
-      display: flex;
-    }
+    .popup-overlay.active { display: flex; }
 
     .popup {
       background: var(--drs-goud);
@@ -248,7 +248,6 @@
       margin: 0 0 0.5rem;
       font-size: 0.95rem;
       line-height: 1.55;
-      color: var(--drs-blauw);
     }
 
     .popup-actions {
@@ -282,11 +281,14 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
 
     <!-- LOGO -->
     <img class="logo" id="logo" src="Images/DRS-logo.png" alt="DRS Classics">
+
+    <!-- TAGLINE (op mobiel automatisch afgebroken) -->
     <p class="tagline" id="tagline">Afwerking die je voelt, niet alleen ziet.</p>
 
     <!-- KEYWORDS -->
@@ -302,26 +304,26 @@
       <div class="panel" id="panel-detailing">
         <div class="panel-title">Detailing</div>
         <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
-        <p>Detailing bij DRS Classics is geen behandeling, maar een ritueel. We werken niet sneller — we werken dieper. Elke lijn, elke glans, elk oppervlak krijgt de tijd om terug te ademen.</p>
-        <p>Met verfijnde technieken herstellen we de helderheid van de lak, verzachten we imperfecties en brengen we een beschermende glanslaag aan die maandenlang blijft spreken.</p>
-        <p>Het interieur wordt zorgvuldig ontdaan van stof, sporen en vermoeidheid, tot het opnieuw warm en uitnodigend voelt.</p>
-        <p>Alles gebeurt in een rustige, gecontroleerde omgeving. Geen haast. Geen afleiding. Alleen aandacht voor jouw wagen.</p>
+        <p>Detailing bij DRS Classics is geen behandeling, maar een ritueel. We werken niet sneller — we werken dieper.</p>
+        <p>Met verfijnde technieken herstellen we glans, diepte en bescherming.</p>
+        <p>Het interieur wordt opnieuw warm en uitnodigend.</p>
+        <p>Alles in rust. Alles met aandacht.</p>
       </div>
 
       <div class="panel" id="panel-restoring">
         <div class="panel-title">Restoring</div>
         <p><strong>Het oorspronkelijke karakter, met zorg herontdekt.</strong></p>
-        <p>Restoring is voor ons een intiem proces — één waarbij we luisteren naar wat een wagen nodig heeft, en vooral naar wat hij wil behouden.</p>
-        <p>We respecteren de originele lijnen, materialen en geest van het ontwerp. Met zachte handen en technische finesse brengen we vorm, detail en balans terug, zonder het verhaal van de auto uit te wissen.</p>
-        <p>Geen over-restauratie, maar subtiele keuzes, consistente kwaliteit en een diep gevoel voor authenticiteit.</p>
+        <p>We luisteren naar wat de wagen nodig heeft en vooral naar wat hij wil behouden.</p>
+        <p>Zachte handen, technische finesse en respect voor het origineel.</p>
+        <p>Geen over-restauratie — maar authentieke schoonheid.</p>
       </div>
 
       <div class="panel" id="panel-service">
         <div class="panel-title">Service</div>
         <p><strong>Zorg die verder gaat dan onderhoud.</strong></p>
-        <p>Service bij DRS Classics is persoonlijk. We werken met een beperkt aantal wagens tegelijk, zodat jouw auto de volledige aandacht krijgt — en jij volledige rust.</p>
-        <p>We plannen onderhoud, check-ups en voorbereidingen op ritten of langere stilstand. Steeds in overleg, altijd transparant.</p>
-        <p>Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.</p>
+        <p>We werken met weinig wagens tegelijk, zodat jouw auto volledige aandacht krijgt.</p>
+        <p>Onderhoud, check-ups en voorbereidingen op ritten of stilstand.</p>
+        <p>Altijd transparant, altijd precies.</p>
       </div>
 
     </div>
@@ -333,9 +335,7 @@
         <a href="mailto:info@drsclassics.be">info@drsclassics.be</a>
         <a href="tel:+32478014317">Atelier: +32 478 01 43 17</a>
         <a href="tel:+32499705870">Coördinatie: +32 499 70 58 70</a>
-        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank" rel="noopener">
-          Noorderstraat 50, 1502 Lembeek
-        </a>
+        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank">Noorderstraat 50, 1502 Lembeek</a>
       </div>
     </div>
 
@@ -343,24 +343,21 @@
 
   <!-- POPUP -->
   <div class="popup-overlay" id="popup-overlay">
-    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
-      <button class="popup-close-x" id="popup-close-x" aria-label="Sluiten">&times;</button>
-      <p class="popup-title" id="popup-title">Opening DRS Classics Atelier</p>
+    <div class="popup">
+      <button class="popup-close-x" id="popup-close-x">&times;</button>
+
+      <p class="popup-title">Opening DRS Classics Atelier</p>
       <p class="popup-subtitle">27 februari — vanaf 16u</p>
+
       <p>Wij openen de deuren — en jij bent uitgenodigd.</p>
       <p>Op <strong>27 februari vanaf 16u</strong> vieren we de start van <strong>DRS Classics</strong>.</p>
       <p>Kom binnen, ontdek het atelier, klink met ons en geniet van frietjes, bubbels en tijdloze klassieke wagens.</p>
-      <p>Het zou ons deugd doen om dit moment samen met jou te beleven.<br>Inschrijven kan hieronder.</p>
+      <p>Het zou ons deugd doen om dit moment samen met jou te beleven.<br><strong>Inschrijven kan hieronder.</strong></p>
 
       <div class="popup-actions">
-        <a
-          class="popup-primary"
-          href="https://forms.gle/JE_GOOGLE_FORM_LINK_HIER"
-          target="_blank"
-          rel="noopener"
-        >
-          Inschrijven
-        </a>
+        <a class="popup-primary"
+           href="https://forms.gle/JE_GOOGLE_FORM_LINK_HIER"
+           target="_blank">Inschrijven</a>
       </div>
     </div>
   </div>
@@ -385,7 +382,6 @@
       keyword.addEventListener('click', () => {
         const target = keyword.dataset.target;
 
-        // tagline weg bij eerste klik
         if (!taglineHidden) {
           tagline.classList.add('hidden');
           taglineHidden = true;
@@ -426,26 +422,22 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    /* POPUP LOGICA */
+    /* POPUP */
     const popupOverlay = document.getElementById('popup-overlay');
     const popupCloseX = document.getElementById('popup-close-x');
 
     function openPopupOnce() {
       try {
         const seen = localStorage.getItem('drsOpeningPopupSeen');
-        if (!seen) {
-          popupOverlay.classList.add('active');
-        }
-      } catch (e) {
+        if (!seen) popupOverlay.classList.add('active');
+      } catch {
         popupOverlay.classList.add('active');
       }
     }
 
     function closePopup() {
       popupOverlay.classList.remove('active');
-      try {
-        localStorage.setItem('drsOpeningPopupSeen', 'true');
-      } catch (e) {}
+      try { localStorage.setItem('drsOpeningPopupSeen', 'true'); } catch {}
     }
 
     window.addEventListener('load', () => {
@@ -453,7 +445,10 @@
     });
 
     popupCloseX.addEventListener('click', closePopup);
+    popupOverlay.addEventListener('click', e => {
+      if (e.target === popupOverlay) closePopup();
+    });
+  </script>
 
-    popupOverlay.addEventListener('click', (e) => {
-      if (e.target === popupOverlay) {
-        closePopup()
+</body>
+</html>
