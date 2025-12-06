@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>DRS Classics – Detailing, Restoring, Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --drs-blauw: #0c203d;
+      --drs-goud: #e8d282;
+      --drs-wit: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--drs-blauw);
+      color: var(--drs-wit);
+      font-family: "Along Serif", serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 960px;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 260px;
+      width: 60%;
+      height: auto;
+      margin: 0 auto 2rem;
+      display: block;
+    }
+
+    .keywords {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .keyword {
+      position: relative;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding-bottom: 0.25rem;
+    }
+
+    .keyword::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+      width: 0;
+      height: 1px;
+      background-color: var(--drs-goud);
+      transition: width 0.25s ease;
+    }
+
+    .keyword:hover::after,
+    .keyword.active::after {
+      width: 100%;
+    }
+
+    .panels {
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      text-align: left;
+    }
+
+    .panel {
+      display: none;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-top: 1px solid rgba(232,210,130,0.35);
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .panel-title {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.85rem;
+      color: var(--drs-goud);
+      margin-bottom: 0.4rem;
+    }
+
+    .panel p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .contact {
+      border-top: 1px solid rgba(232,210,130,0.35);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact h2 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--drs-goud);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem 2rem;
+    }
+
+    .contact a {
+      color: var(--drs-wit);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      color: var(--drs-goud);
+    }
+
+    @media (max-width: 600px) {
+      .panels {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- LOGO -->
+    <img
+      class="logo"
+      src="images/drs-classics-logo-negatief.svg"
+      alt="DRS Classics"
+    >
+
+    <!-- KLIKBARE WOORDEN -->
+    <div class="keywords">
+      <span class="keyword" data-target="detailing">Detailing</span>
+      <span class="keyword" data-target="restoring">Restoring</span>
+      <span class="keyword" data-target="service">Service</span>
+    </div>
+
+    <!-- UITKLAPPENDE TEKST -->
+    <div class="panels">
+      <div class="panel" id="panel-detailing">
+        <div class="panel-title">Detailing</div>
+        <p>
+          Diepe, zorgvuldige reiniging en afwerking van interieur en exterieur. 
+          Lakcorrectie, bescherming, lederverzorging en aandacht voor elk detail – 
+          zodat je oldtimer of youngtimer er beter uitziet dan bij aflevering.
+        </p>
+      </div>
+
+      <div class="panel" id="panel-restoring">
+        <div class="panel-title">Restoring</div>
+        <p>
+          Gerichte cosmetische en lichte technische ingrepen om je wagen opnieuw 
+          tot leven te brengen. We respecteren de originele lijnen en materialen, 
+          en zoeken samen naar de juiste balans tussen patina en perfectie.
+        </p>
+      </div>
+
+      <div class="panel" id="panel-service">
+        <div class="panel-title">Service</div>
+        <p>
+          Kleine onderhoudswerken, check-ups en voorbereiding op rally, roadtrip 
+          of winterstop. Transparante communicatie, duidelijke afspraken en één 
+          vast aanspreekpunt voor jouw wagen.
+        </p>
+      </div>
+    </div>
+
+    <!-- CONTACT ONDERAAN -->
+    <div class="contact">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:info@drsclassics.be">info@drsclassics.be</a>
+        <a href="tel:+32XXXXXXXXX">+32 … … … (Wouter)</a>
+        <a href="tel:+32YYYYYYYYY">+32 … … … (Marthe)</a>
+        <a href="https://maps.google.com/?q=Jouw+adres+hier" target="_blank" rel="noopener">
+          Adres: Jouw adres hier
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Klikbare woorden laten panels openklappen
+    const keywords = document.querySelectorAll('.keyword');
+    const panels = {
+      detailing: document.getElementById('panel-detailing'),
+      restoring: document.getElementById('panel-restoring'),
+      service: document.getElementById('panel-service')
+    };
+
+    keywords.forEach(keyword => {
+      keyword.addEventListener('click', () => {
+        const target = keyword.dataset.target;
+
+        // Als je wil dat er maar één tegelijk open staat:
+        keywords.forEach(k => k.classList.remove('active'));
+        Object.values(panels).forEach(p => p.classList.remove('active'));
+
+        keyword.classList.add('active');
+        panels[target].classList.add('active');
+      });
+    });
+
+    // Optioneel: standaard "Detailing" openzetten
+    document.querySelector('.keyword[data-target="detailing"]').click();
+  </script>
+</body>
+</html>
 
