@@ -448,17 +448,11 @@
     const popupCloseX = document.getElementById('popup-close-x');
 
     function openPopupOnce() {
-      try {
-        const seen = localStorage.getItem('drsOpeningPopupSeen');
-        if (!seen) popupOverlay.classList.add('active');
-      } catch {
-        popupOverlay.classList.add('active');
-      }
-    }
+  popupOverlay.classList.add('active');
+}
 
     function closePopup() {
       popupOverlay.classList.remove('active');
-      try { localStorage.setItem('drsOpeningPopupSeen', 'true'); } catch {}
     }
 
     window.addEventListener('load', () => {
