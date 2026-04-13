@@ -14,7 +14,9 @@
       --fade-ease: ease;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -34,7 +36,6 @@
       text-align: center;
     }
 
-    /* LOGO */
     .logo {
       max-width: 180px;
       width: 45%;
@@ -44,7 +45,6 @@
       cursor: pointer;
     }
 
-    /* TAGLINE */
     .tagline {
       margin: 0 0 1.6rem;
       font-size: 0.85rem;
@@ -60,18 +60,16 @@
       margin-bottom: 0;
     }
 
-    /* standaard: de mobiele line-break niet tonen */
     .mobile-break {
       display: none;
     }
 
-    /* KEYWORDS */
     .keywords {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2.2rem;          /* iets meer luxe-ruimte */
-      margin-top: 2.2rem;   /* ruimte onder slagzin */
+      gap: 2.2rem;
+      margin-top: 2.2rem;
       margin-bottom: 1.5rem;
     }
 
@@ -80,7 +78,7 @@
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 1.05rem;   /* tikje groter dan 0.9 */
+      font-size: 1.05rem;
       font-weight: 700;
       padding-bottom: 0.25rem;
     }
@@ -103,7 +101,6 @@
       width: 100%;
     }
 
-    /* PANELS */
     .panels {
       max-width: 620px;
       margin: 0 auto 2rem;
@@ -116,9 +113,8 @@
       display: none;
       opacity: 0;
       transition: opacity var(--fade-duration) var(--fade-ease);
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      border-top: 1px solid rgba(232,210,130,0.35);
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(232, 210, 130, 0.35);
       position: absolute;
       left: 0;
       right: 0;
@@ -144,9 +140,8 @@
       line-height: 1.6;
     }
 
-    /* CONTACT */
     .contact {
-      border-top: 1px solid rgba(232,210,130,0.35);
+      border-top: 1px solid rgba(232, 210, 130, 0.35);
       padding-top: 1rem;
       margin-top: 1rem;
       font-size: 0.9rem;
@@ -176,21 +171,19 @@
       color: var(--drs-goud);
     }
 
-    /* 📱 MOBIEL AANPASSINGEN */
     @media (max-width: 600px) {
+      body {
+        font-size: 1.08rem;
+      }
 
-      body { font-size: 1.08rem; }
-
-      /* slagzin op 2 regels op mobiel */
       .mobile-break {
         display: inline;
       }
 
-      /* KEYWORDS GROTER + MEER AFSTAND */
       .keywords {
         flex-direction: column;
         gap: 1.8rem;
-        margin-top: 2.8rem; /* extra afstand onder slagzin bij start */
+        margin-top: 2.8rem;
       }
 
       .keyword {
@@ -202,7 +195,9 @@
         line-height: 1.65;
       }
 
-      .contact { font-size: 1.02rem; }
+      .contact {
+        font-size: 1.02rem;
+      }
 
       .contact-links {
         flex-direction: column;
@@ -210,32 +205,24 @@
         gap: 0.4rem;
       }
     }
-
-
   </style>
 </head>
 
 <body>
   <div class="page">
-
-    <!-- LOGO -->
     <img class="logo" id="logo" src="Images/DRS-logo.png" alt="DRS Classics">
 
-    <!-- SLAGZIN: 1 regel desktop, 2 regels mobiel -->
     <p class="tagline" id="tagline">
       Afwerking die je voelt,<span class="mobile-break"><br></span> niet alleen ziet.
     </p>
 
-    <!-- KEYWORDS -->
-    <div class="keywords">
+    <div class="keywords" id="keywords">
       <span class="keyword" data-target="detailing">Detailing</span>
       <span class="keyword" data-target="restoring">Restoring</span>
       <span class="keyword" data-target="service">Service</span>
     </div>
 
-    <!-- PANELS -->
     <div class="panels">
-
       <div class="panel" id="panel-detailing">
         <div class="panel-title">Detailing</div>
         <p><strong>Stilte. Aandacht. Pure afwerking.</strong></p>
@@ -260,134 +247,85 @@
         <p>We plannen onderhoud, check-ups en voorbereidingen op ritten of langere stilstand. Steeds in overleg, altijd transparant.</p>
         <p>Je krijgt één aanspreekpunt, duidelijke updates en de zekerheid dat alles met precisie gebeurt.</p>
       </div>
-
     </div>
 
-    <!-- CONTACT -->
     <div class="contact">
       <h2>Contact</h2>
       <div class="contact-links">
         <a href="mailto:info@drs-classics.be">info@drs-classics.be</a>
         <a href="tel:+32478014317">Atelier: +32 478 01 43 17</a>
         <a href="tel:+32499705870">Coördinatie: +32 499 70 58 70</a>
-        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank">Noorderstraat 50, 1502 Lembeek</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- POPUP -->
-  <div class="popup-overlay" id="popup-overlay">
-    <div class="popup">
-      <button class="popup-close-x" id="popup-close-x">&times;</button>
-
-      <p class="popup-title">Opening DRS Classics Atelier</p>
-
-      <p>Wij openen de deuren én jij bent uitgenodigd!</p>
-      <p>Op <strong>27 februari vanaf 16u</strong> vieren we de start van het DRS Classics Atelier.</p>
-      <p>Kom binnen, ontdek de werkplek, klink met ons en geniet van frietjes, bubbels en tijdloze klassieke wagens.</p>
-      <p>Het zou ons enorm deugd doen om dit moment samen met jou te beleven. Schrijf je dus snel in!</p>
-
-      <div class="popup-actions">
-        <a class="popup-primary"
-           href="https://forms.gle/KnkHiAUuTLde3zrn9"
-           target="_blank">Inschrijven</a>
+        <a href="https://maps.app.goo.gl/kdcUBGwdJLaf97zP7" target="_blank" rel="noopener noreferrer">Noorderstraat 50, 1502 Lembeek</a>
       </div>
     </div>
   </div>
 
   <script>
-    /* PANEL LOGICA */
-    const keywords = document.querySelectorAll('.keyword');
+    const keywords = document.querySelectorAll(".keyword");
     const panels = {
-      detailing: document.getElementById('panel-detailing'),
-      restoring: document.getElementById('panel-restoring'),
-      service: document.getElementById('panel-service')
+      detailing: document.getElementById("panel-detailing"),
+      restoring: document.getElementById("panel-restoring"),
+      service: document.getElementById("panel-service")
     };
-    const tagline = document.getElementById('tagline');
-    const keywordsContainer = document.querySelector('.keywords');
-    let taglineHidden = false;
 
-    Object.values(panels).forEach(p => {
-      p.style.display = "none";
-      p.style.opacity = 0;
-    });
+    const tagline = document.getElementById("tagline");
+    const keywordsContainer = document.getElementById("keywords");
+    const logo = document.getElementById("logo");
 
-    keywords.forEach(keyword => {
-      keyword.addEventListener('click', () => {
-        const target = keyword.dataset.target;
-
-        if (!taglineHidden) {
-          tagline.classList.add('hidden');
-          taglineHidden = true;
-
-          // Op mobiel: onderwerpen iets dichter naar boven schuiven
-          if (window.innerWidth <= 600 && keywordsContainer) {
-            keywordsContainer.style.marginTop = '0.8rem';
-          }
-        }
-
-        keywords.forEach(k => k.classList.remove('active'));
-        keyword.classList.add('active');
-
-        Object.values(panels).forEach(panel => {
-          panel.classList.remove('active');
-          panel.style.display = "none";
-          panel.style.opacity = 0;
-        });
-
-        const activePanel = panels[target];
-        activePanel.style.display = "block";
-
-        setTimeout(() => {
-          activePanel.classList.add('active');
-          activePanel.style.opacity = 1;
-        }, 10);
-      });
-    });
-
-    /* LOGO RESET */
-    const logo = document.getElementById('logo');
-    logo.addEventListener('click', () => {
-      tagline.classList.remove('hidden');
-      taglineHidden = false;
-
-      // Op mobiel: onderwerpen terug op start-positie
-      if (window.innerWidth <= 600 && keywordsContainer) {
-        keywordsContainer.style.marginTop = '2.8rem'; // zelfde als CSS startwaarde
-      }
-
-      keywords.forEach(k => k.classList.remove('active'));
+    function hideAllPanels() {
       Object.values(panels).forEach(panel => {
-        panel.classList.remove('active');
+        panel.classList.remove("active");
         panel.style.display = "none";
         panel.style.opacity = 0;
       });
+    }
 
+    function resetView() {
+      tagline.classList.remove("hidden");
+
+      if (window.innerWidth <= 600) {
+        keywordsContainer.style.marginTop = "2.8rem";
+      } else {
+        keywordsContainer.style.marginTop = "2.2rem";
+      }
+
+      keywords.forEach(keyword => keyword.classList.remove("active"));
+      hideAllPanels();
+    }
+
+    function openPanel(target, clickedKeyword) {
+      tagline.classList.add("hidden");
+
+      if (window.innerWidth <= 600) {
+        keywordsContainer.style.marginTop = "0.8rem";
+      }
+
+      keywords.forEach(keyword => keyword.classList.remove("active"));
+      clickedKeyword.classList.add("active");
+
+      hideAllPanels();
+
+      const activePanel = panels[target];
+      activePanel.style.display = "block";
+
+      setTimeout(() => {
+        activePanel.classList.add("active");
+        activePanel.style.opacity = 1;
+      }, 10);
+    }
+
+    keywords.forEach(keyword => {
+      keyword.addEventListener("click", () => {
+        openPanel(keyword.dataset.target, keyword);
+      });
+    });
+
+    logo.addEventListener("click", () => {
+      resetView();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    /* POPUP */
-    const popupOverlay = document.getElementById('popup-overlay');
-    const popupCloseX = document.getElementById('popup-close-x');
-
-    function openPopupOnce() {
-  popupOverlay.classList.add('active');
-}
-
-    function closePopup() {
-      popupOverlay.classList.remove('active');
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(openPopupOnce, 800);
-    });
-
-    popupCloseX.addEventListener('click', closePopup);
-    popupOverlay.addEventListener('click', e => {
-      if (e.target === popupOverlay) closePopup();
-    });
+    resetView();
   </script>
-
 </body>
 </html>
